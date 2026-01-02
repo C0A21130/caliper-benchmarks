@@ -2,13 +2,13 @@ simpleArgs: &simple-args
   tokenId: 1
 
 test:
-  name: erc721
+  name: Scoring benchmark
   description: >-
-    To benchmark minting and transferring tokens of an ERC721 contract.
+    This benchmark measures NFT trading smart contracts for authorization using trust scoring.
   workers:
     number: 1
   rounds:
-    - label: Mint(Original)
+    - label: Mint(Scoring)
       description: >-
         Mint ERC721 Tokens.
       txNumber: 2000
@@ -17,10 +17,10 @@ test:
         opts:
           tps: 20
       workload:
-        module: benchmarks/scenario/ERC-721/mint.js
+        module: benchmarks/scenario/scoring/mint.js
         arguments:
           << : *simple-args
-    - label: Transfer(Original)
+    - label: Transfer(Scoring)
       description: >-
         Transfer ERC721 Tokens between accounts.
       txNumber: 2000
@@ -29,6 +29,6 @@ test:
         opts:
           tps: 20
       workload:
-        module: benchmarks/scenario/ERC-721/transfer.js
+        module: benchmarks/scenario/scoring/transfer.js
         arguments:
           << : *simple-args
